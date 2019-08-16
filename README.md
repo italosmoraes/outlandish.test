@@ -66,6 +66,7 @@ Where:
 In all cases P should be rounded down if it is not already an integer. So for instance 49.99 would round down to 49.
 
 For example, a 100m time of 16.2 seconds would be calculated as 9.23076 x (26.7-16.2)^1.835, which works out to
+
 690.4302695, which in turn rounds down to 690 points.
 
 
@@ -81,16 +82,30 @@ an athlete's event, and consists of comma-separated values for:
 - The time or distance achieved by the athlete in the event.
 - The date and time that the score was achieved.
 
-You should expect the input data to be a little messy, so there may (or may not) be leading or trailing whitespace for
-each value, and some lines may be blank. Names and event abbreviations must be treated as case-insensitive. Scores do
-not necessarily include the unit suffix ('s' for seconds, 'm' for metres), but will always be of the form 1.23 (for
+(/) -You should expect the input data to be a little messy, so there may (or may not) be leading or -trailing whitespace for
+each value, 
+(/) -and some lines may be blank.
+(/) -Names and event abbreviations must be treated as case-insensitive. 
+ ()-Scores do
+not necessarily include the unit suffix ('s' for seconds, 'm' for metres),
+!this means I can simpy assume the number format when calculating the final score
+ ()- but will always be of the form 1.23 (for
 seconds or metres) or 1:23.45 (for minutes and seconds).
 
+(?)
+(just ignore these, as they should be assumptions?)
+(OR check for these and return errors?)
 You may assume that there will be no more than one entry in each data set for a given event for a given athlete,
-and that there will not be more than one athlete with the same name. Non-blank lines will always contain the four
+and that there will not be more than one athlete with the same name.
+Non-blank lines will always contain the four
 relevant values in the correct order.
 
-None of the athletes' names is longer than 15 characters and that their scores will be within the normal scoring ranges
+(?) should I do something about the name size?
+None of the athletes' names is longer than 15 characters
+
+(?) should I check for ranges? or is this then something that is not part of a 
+requirement to for e.g. 'verify acceptable human ranges'?
+- and that their scores will be within the normal scoring ranges
 for professional heptathletes.
 
 
@@ -98,16 +113,26 @@ for professional heptathletes.
 Output data
 -----------
 
-Your program must calculate the daily cumulative scores for each athlete across all their events for each day of the
-competition, and output a daily league table showing their names and scores, in descending order of score. Each daily
-summary should show the total cumulative score-to-date for each athlete (you may omit athletes whose cumulative score
-is zero). You may assume that there will not be any athlete with the same cumulative score. Names must start in the
-first column of the output and be capitalised, and scores must be separated from names by the appropriate number of
+() Your program must calculate the daily cumulative scores for each athlete across all their events for each day of the
+competition,
+() and output a daily league table showing their names and scores, in descending order of score. 
+() Each daily
+summary should show the total cumulative score-to-date for each athlete
+() (you may omit athletes whose cumulative score
+is zero).
+() You may assume that there will not be any athlete with the same cumulative score. (?) why does this matter?
+
+() Names must start in the
+first column of the output and be capitalised,
+() and scores must be separated from names by the appropriate number of
 space characters to enable them to be right-justified with the rightmost digit of the score in the 20th column
 (see Sample input, below).
 
-Daily tables must have a header containing the date, and each day must be separated from the previous day with a blank
-line. There should be no blank line at the end. For valid input data, there should be no other output.
+() Daily tables must have a header containing the date,
+() and each day must be separated from the previous day with a blank
+line.
+() There should be no blank line at the end.
+() For valid input data, there should be no other output.
 
 
 

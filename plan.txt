@@ -1,0 +1,9 @@
+1. happy path from input to scores
+
+2. include the assumptions for formatting
+
+3. cover edge cases
+
+4. go over documenting
+
+.test all the way
