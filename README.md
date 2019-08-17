@@ -63,7 +63,7 @@ Where:
 | Shot put           | Shot         | 56.0211  | 1.50  | 1.05  |
 | Javelin throw      | Javelin      | 15.9803  | 3.80  | 1.04  |
 
-In all cases P should be rounded down if it is not already an integer. So for instance 49.99 would round down to 49.
+() In all cases P should be rounded down if it is not already an integer. So for instance 49.99 would round down to 49.
 
 For example, a 100m time of 16.2 seconds would be calculated as 9.23076 x (26.7-16.2)^1.835, which works out to
 
@@ -86,10 +86,10 @@ an athlete's event, and consists of comma-separated values for:
 each value, 
 (/) -and some lines may be blank.
 (/) -Names and event abbreviations must be treated as case-insensitive. 
- ()-Scores do
+(/) -Scores do
 not necessarily include the unit suffix ('s' for seconds, 'm' for metres),
 !this means I can simpy assume the number format when calculating the final score
- ()- but will always be of the form 1.23 (for
+() - but will always be of the form 1.23 (for
 seconds or metres) or 1:23.45 (for minutes and seconds).
 
 (?)

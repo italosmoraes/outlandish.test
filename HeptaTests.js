@@ -30,6 +30,14 @@ const testCase = () => {
         (Math.pow((weightTable[event].B - 10.88),
          weightTable[event].C))
     console.log('result 200m', result);
+
+    console.log('convert 1.45 to number', Number.parseFloat('1.45') === 1.45);
+
+    console.log('is same date', new Date('2016-07-02T00:00:00.000Z') === new Date('2016-07-02T00:00:00.000Z'));
+    console.log('is same date', new Date('2016-07-02T00:00:00.000Z').getTime() === new Date('2016-07-02T00:00:00.000Z').getTime());
+
+    console.log('is same date', new Date('2016-07-02').getTime() === new Date('2016-07-02').getTime());
+    console.log('is same date', new Date('2016-07-02').getTime() === new Date('2016-07-03').getTime());
 }
 
 testCase();

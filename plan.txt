@@ -7,3 +7,17 @@
 4. go over documenting
 
 .test all the way
+
+Log:
+4 hours 
+() finishing calculations
+
+5 hours
+() get final scores
+muita dificuldade de lidar com o fato de que estou praticamente
+escrevendo algoritmos de busca de dados
+como se fosse sql
+
+() show output
+
+() verify
