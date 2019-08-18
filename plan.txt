@@ -10,10 +10,10 @@
 
 Log:
 4 hours 
-() finishing calculations
+(/) finishing calculations
 
 5 hours
-() get final scores
+(/) get final scores
 muita dificuldade de lidar com o fato de que estou praticamente
 escrevendo algoritmos de busca de dados
 como se fosse sql
@@ -21,7 +21,11 @@ muita dificuldade de me colocar no mindset de pensar sobre a order dos dados
 e como quero manipular
 
 2 hours
-() show output
+(/) show output
 dificil os detalhes de ordenar e formatar de acordo cada pedacinho
 
-() verify
+0.5 hours
+(/) verify and clean up
+
+acho que no fim das contas eu fiz uma solucao com mais do que eles esperavam em 4 horas
+mas acho q as 8 horas cumulativas de trabalho valeram a pena!
