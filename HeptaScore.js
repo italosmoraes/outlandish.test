@@ -327,7 +327,7 @@ const getDailyCumulativeScores = calculatedScoresTable => {
                     temp = {
                         ...temp,
                         score: tempTotalScore,
-                        date: calculatedScoresTable[x].date,
+                        date: new Date(calculatedScoresTable[x].date.split(' ')[0]),
                     }
                     cumulativeScoresPerDatePerName.push(temp);
                 }
@@ -346,54 +346,183 @@ const getDailyCumulativeScores = calculatedScoresTable => {
 
 /**
  * 
- * [ { name: 'george', score: 1506, date: '2016-07-02 10:34:00' },
-  { name: 'george', score: 1722, date: '2016-07-04 10:02:00' },
-  { name: 'george', score: 2544, date: '2016-07-04 10:02:00' },
-  { name: 'bungle', score: 1582, date: '2016-07-02 10:34:00' },
-  { name: 'bungle', score: 2721, date: '2016-07-03 11:49:00' },
-  { name: 'zippy', score: 1565, date: '2016-07-02 10:34:00' },
-  { name: 'zippy', score: 2628, date: '2016-07-03 11:00:00' },
-  { name: 'italo', score: 1819, date: '2016-07-03 10:02:00' },
-  { name: 'italo', score: 2035, date: '2016-07-03 10:02:00' },
-  { name: 'italo', score: 2857, date: '2016-07-04 10:02:00' },
-  { name: 'clark', score: 166, date: '2016-07-04 10:02:00' } ]
- * --------------------
- Day 1: 02 Jul 2016
---------------------
-BUNGLE          1582
-ZIPPY           1564
-GEORGE          1505
- * @param {*} totalScoresPerDate 
+ * @param Date date 
+ * @param Array[Object] table 
  */
+const showFormattedTable = (date, table, index) => {
+    const dottedLine = '--------------------';
 
- // @todo talvez seja melhor buscar por nome:
- // para cada data, buscar cada nome e mostrar
+    const dateString = date.toDateString().split(' ');
+    const newDateString = `${dateString[1]} ${dateString[2]} ${dateString[3]}`;
+    const dayLabel = `Day ${index}: `;
+
+    const noBlanks = 20 - (newDateString.length + dayLabel.length);
+    let blanks = '';
+    for (let x=0; x<noBlanks; x++) {
+        blanks += ' ';
+    }
+
+    const header = `${dayLabel}${blanks}${newDateString}`
+
+    console.log(dottedLine);
+    console.log(header);
+    console.log(dottedLine);
+
+    table.forEach(item => {
+        const noBlanks = 20 - (item.name.length + item.score.toString().length);
+        const capitalizedScore = item.score.toString().toUpperCase();
+
+        let blanks = '';
+        for (let x=0; x<noBlanks; x++) {
+            blanks += ' ';
+        }
+
+        const scoreLine = `${item.name.toUpperCase()}${blanks}${capitalizedScore}`
+
+        console.log(scoreLine);
+    })
+}
+
+/**
+ * 
+ * @param totalScoresPerDate 
+ */
 const showDailyScores = (totalScoresPerDate) => {
+    let scoresToDate = [];
+    let dateProcessedHelper = [];
+
+    // order the scores per date
+    const scoresPerDateOrdered =
+        totalScoresPerDate.sort((a, b) => a.date.getTime() - b.date.getTime());
+
+    let noOfDays = 0;
+    for (let x = 0; x < scoresPerDateOrdered.length; x++) {
+        const currentDate = scoresPerDateOrdered[x].date.getTime();
+
+        // find each athletes scores, each day
+        if (!dateProcessedHelper.includes(currentDate)) {
+            if (scoresToDate.length > 0) {
+                // blank line
+                console.log('');
+            }
+            noOfDays += 1;
+
+            for (let y=0; y < scoresPerDateOrdered.length; y++) {
+                
+                if (scoresPerDateOrdered[y].date.getTime() === currentDate) {
+                    // find athletes today
+                    // replace existing each day, which maintains the non scoring in the list
+                    // no need to show if score is zero
+                    const name = scoresPerDateOrdered[y].name;
+
+                    let idx = null;
+                    if (scoresToDate.find(
+                            (el, index) => {
+                                if (el.name === name) {
+                                    idx = index;
+                                    return true;
+                                }
+                            })) {
+                        
+                            const updated = {
+                                name,
+                                score: scoresPerDateOrdered[y].score
+                            }
+                            scoresToDate.splice(idx, 1, updated)
+                            
+                    } else {
+                        
+                        scoresToDate.push({
+                            name,
+                            score: scoresPerDateOrdered[y].score
+                        })
+                        
+                    }
+                }
+
+            }
+
+            // console.log('--------------------');
+            // console.log(totalScoresPerDate[x].date);
+            // console.log(scoresToDate);
+
+            dateProcessedHelper.push(currentDate);
+
+            // order scores
+            const orderedScoresTable = scoresToDate.sort((a, b) => b.score - a.score);
+
+            // format final
+            showFormattedTable(totalScoresPerDate[x].date, scoresToDate, noOfDays);
+        }
+        
+        
+    }
+
+
+
+
+    // console.log('inside totalScoresPerDate', totalScoresPerDate);
+    // listOfAlreadySearched = [];
+    // let xDayList = [];
+    // for (let x=0; x < totalScoresPerDate.length; x++) {
+    //     const date = new Date(totalScoresPerDate[x].date).getTime();
+
+        
+
+    //     if (date !== listOfAlreadySearched.find(el => el === date)) {
+    //     console.log('-----------------')
+    //     console.log('date', totalScoresPerDate[x].date);
+
+    //         for (let y = 0; y < totalScoresPerDate.length; y++) {
+    //             const dateT = new Date(totalScoresPerDate[y].date).getTime();
+    //             if (date === dateT) {
+    //                 xDayList.push({
+    //                     name: totalScoresPerDate[y].name,
+    //                     score: totalScoresPerDate[y].score
+    //                 })
+    //                 // console.log(totalScoresPerDate[y].name, totalScoresPerDate[y].score);
+    //             }
+
+    //         }
+    //     }
+
+    //     // push Date to listOfAlreadySearched
+    //     listOfAlreadySearched.push(date);
+
+    //     xDayList.forEach(item => {
+    //         console.log(item);
+    //     })
+    //     xDayList = [];
+    // }
+
+
+
+
     // order all dates
     // go through the list and get the smallest
 
     // go through list showing all scores per name per date
     // with formatted output
 
-    dateShownListHelper = [];
-    for (let x=0; x < totalScoresPerDate.length; x++) {
+    // dateShownListHelper = [];
+    // for (let x=0; x < totalScoresPerDate.length; x++) {
 
-        // formatDailyScoreHeader(x, totalScoresPerDate[x].date)
-        const date = new Date(totalScoresPerDate[x].date).getTime();
+    //     // formatDailyScoreHeader(x, totalScoresPerDate[x].date)
+    //     const date = new Date(totalScoresPerDate[x].date).getTime();
 
-        console.log('totalScoresPerDate[x].date.getTime()', date)
-        // vai pela lista e pela todos os items dessa data
-        if (!dateShownListHelper.find(el => el === date)) {
-            totalScoresPerDate.forEach(row => {
-                if (date === new Date(row.date).getTime()) {
+    //     console.log('totalScoresPerDate[x].date.getTime()', date)
+    //     // vai pela lista e pela todos os items dessa data
+    //     if (!dateShownListHelper.find(el => el === date)) {
+    //         totalScoresPerDate.forEach(row => {
+    //             if (date === new Date(row.date).getTime()) {
 
-                    console.log(row.name, row.score);
-                }
-            })
-        }
+    //                 console.log(row.name, row.score);
+    //             }
+    //         })
+    //     }
 
-        dateShownListHelper.push(date);
-    }
+    //     dateShownListHelper.push(date);
+    // }
 
 
 

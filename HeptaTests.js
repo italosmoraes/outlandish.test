@@ -35,6 +35,7 @@ const testCase = () => {
 
     console.log('is same date', new Date('2016-07-02T00:00:00.000Z') === new Date('2016-07-02T00:00:00.000Z'));
     console.log('is same date', new Date('2016-07-02T00:00:00.000Z').getTime() === new Date('2016-07-02T00:00:00.000Z').getTime());
+    console.log('is same date', new Date('2016-07-02T00:00:10.000Z').getTime() === new Date('2016-07-02T00:00:00.000Z').getTime());
 
     console.log('is same date', new Date('2016-07-02').getTime() === new Date('2016-07-02').getTime());
     console.log('is same date', new Date('2016-07-02').getTime() === new Date('2016-07-03').getTime());

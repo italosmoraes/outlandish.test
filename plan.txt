@@ -17,7 +17,11 @@ Log:
 muita dificuldade de lidar com o fato de que estou praticamente
 escrevendo algoritmos de busca de dados
 como se fosse sql
+muita dificuldade de me colocar no mindset de pensar sobre a order dos dados
+e como quero manipular
 
+2 hours
 () show output
+dificil os detalhes de ordenar e formatar de acordo cada pedacinho
 
 () verify

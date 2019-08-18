@@ -113,26 +113,26 @@ for professional heptathletes.
 Output data
 -----------
 
-() Your program must calculate the daily cumulative scores for each athlete across all their events for each day of the
+(/) Your program must calculate the daily cumulative scores for each athlete across all their events for each day of the
 competition,
 () and output a daily league table showing their names and scores, in descending order of score. 
-() Each daily
+(/) Each daily
 summary should show the total cumulative score-to-date for each athlete
-() (you may omit athletes whose cumulative score
+(/) (you may omit athletes whose cumulative score
 is zero).
-() You may assume that there will not be any athlete with the same cumulative score. (?) why does this matter?
+(/) You may assume that there will not be any athlete with the same cumulative score. (?) why does this matter?
 
-() Names must start in the
+(/) Names must start in the
 first column of the output and be capitalised,
-() and scores must be separated from names by the appropriate number of
+(/) and scores must be separated from names by the appropriate number of
 space characters to enable them to be right-justified with the rightmost digit of the score in the 20th column
 (see Sample input, below).
 
-() Daily tables must have a header containing the date,
-() and each day must be separated from the previous day with a blank
+(/) Daily tables must have a header containing the date,
+(/) and each day must be separated from the previous day with a blank
 line.
-() There should be no blank line at the end.
-() For valid input data, there should be no other output.
+(/ There should be no blank line at the end.
+(/) For valid input data, there should be no other output.
 
 
 
