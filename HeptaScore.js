@@ -287,7 +287,7 @@ const showFormattedTable = (date, table, index) => {
     const dottedLine = '--------------------';
 
     const dateString = date.toDateString().split(' ');
-    const formattedDateString = `${dateString[1]} ${dateString[2]} ${dateString[3]}`;
+    const formattedDateString = `${dateString[2]} ${dateString[1]} ${dateString[3]}`;
     const dayLabel = `Day ${index}: `;
 
     const noBlanks = 20 - (formattedDateString.length + dayLabel.length);
