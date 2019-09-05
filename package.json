@@ -1,0 +1,30 @@
+{
+  "scripts": {
+    "test:jest": "jest --coverage",
+    "test:jest:watch": "jest --watch",
+    "test": "PROMETHEUS_PORT=5000 NODE_ENV=test mocha --recursive --reporter spec --exit test/",
+    "test:coverage": "PROMETHEUS_PORT=5000 NODE_ENV=test istanbul cover _mocha -- --recursive --reporter spec --exit ./test/",
+    "lint": "eslint --quiet ./src/",
+    "start": "node ./src/index.js",
+    "dev": "NODE_ENV=test nodemon ./src/index.js"
+  },
+  "dependencies": {
+    "axios": "^0.18.0"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "chai-http": "^4.0.0",
+    "dirty-chai": "^2.0.1",
+    "eslint": "^5.4.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "istanbul": "^1.1.0-alpha.1",
+    "mkdirp-promise": "^5.0.1",
+    "mocha": "^4.1.0",
+    "moxios": "^0.4.0",
+    "nodemon": "^1.18.7",
+    "pre-commit": "^1.2.2",
+    "sinon": "^4.5.0",
+    "sinon-chai": "^3.2.0"
+  }
+}

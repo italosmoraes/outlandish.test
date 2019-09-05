@@ -24,7 +24,7 @@ const weightTable = {
     'long': {
         A: 0.188807,
         B: 210,
-        C: 1.141
+        C: 1.41
     },
     'shot': {
         A: 56.0211,
@@ -172,14 +172,16 @@ const getRunningFinalScore = (event, score) => {
  * @param {Number} score 
  */
 const getScoreForEvent = (event, score) => {
+    let result = null;
+    
     if (event.includes('200') || event.includes('800') || event.includes('100')) {
-        return getRunningFinalScore(event, score);
+        return Math.trunc(getRunningFinalScore(event, score));
     }
     else if (event === 'long' || event === 'high') {
-        return getJumpingFinalScore(event, score);
+        return Math.trunc(getJumpingFinalScore(event, score));
     }
     else if (event === 'shot' || event === 'javelin') {
-        return getThrowingFinalScore(event, score);
+        return Math.trunc(getThrowingFinalScore(event, score));
     }
     return null;
 }
@@ -199,10 +201,11 @@ const getScoreForEvent = (event, score) => {
 const calculateScoresPerDay = (scoresTable) => {
     const scoresTableWithPoints = [];
 
-    const dailyScoresPerAthlete = scoresTable.map(scoreRow => {
+    scoresTable.map(scoreRow => {
+        
         let score = 0;
         if (scoreRow) {
-            score = Math.round(getScoreForEvent(scoreRow.event, scoreRow.score));
+            score = getScoreForEvent(scoreRow.event, scoreRow.score);
         }
         // mount score per name object
         scoresTableWithPoints.push({
@@ -386,7 +389,8 @@ const calculateScores = () => {
     // no need to validate the data file name exists for this exercise
     // nor validate more than one argument
     // so I either take the file path arg
-    const scoresCsvList = getCsvFromInputFile(process.argv[2]);
+    // const scoresCsvList = getCsvFromInputFile('sampleInput.csv');
+    const scoresCsvList = getCsvFromInputFile('originalnput.csv');
 
     const scoresTableRepresentation = normaliseScoresData(scoresCsvList);
 
@@ -398,3 +402,8 @@ const calculateScores = () => {
 }
 
 calculateScores();
+
+module.exports = {
+    getDailyCumulativeScores,
+    getScoreForEvent,
+};
