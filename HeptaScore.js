@@ -389,8 +389,7 @@ const calculateScores = () => {
     // no need to validate the data file name exists for this exercise
     // nor validate more than one argument
     // so I either take the file path arg
-    // const scoresCsvList = getCsvFromInputFile('sampleInput.csv');
-    const scoresCsvList = getCsvFromInputFile('originalnput.csv');
+    const scoresCsvList = getCsvFromInputFile(process.argv[2]);
 
     const scoresTableRepresentation = normaliseScoresData(scoresCsvList);
 

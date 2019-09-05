@@ -89,7 +89,7 @@ each value,
 (/) -Scores do
 not necessarily include the unit suffix ('s' for seconds, 'm' for metres),
 !this means I can simpy assume the number format when calculating the final score
-() - but will always be of the form 1.23 (for
+(/) - but will always be of the form 1.23 (for
 seconds or metres) or 1:23.45 (for minutes and seconds).
 
 (?)

@@ -39,22 +39,6 @@ describe('tests', () => {
             totalScore: 1819
         }
     ];
-
-    // const cumulativeScoresPerDay = [ { name: 'george', score: 1506, date: 2016-07-02T00:00:00.000Z },
-    // { name: 'george', score: 1722, date: 2016-07-04T00:00:00.000Z },
-    // { name: 'george', score: 2544, date: 2016-07-04T00:00:00.000Z },
-    // { name: 'george', score: 2760, date: 2016-07-06T00:00:00.000Z },
-    // { name: 'george', score: 3582, date: 2016-07-06T00:00:00.000Z },
-    // { name: 'bungle', score: 1582, date: 2016-07-02T00:00:00.000Z },
-    // { name: 'bungle', score: 2721, date: 2016-07-03T00:00:00.000Z },
-    // { name: 'bungle', score: 3860, date: 2016-07-05T00:00:00.000Z },
-    // { name: 'zippy', score: 1565, date: 2016-07-02T00:00:00.000Z },
-    // { name: 'zippy', score: 2628, date: 2016-07-03T00:00:00.000Z },
-    // { name: 'zippy', score: 3691, date: 2016-07-05T00:00:00.000Z },
-    // { name: 'italo', score: 1819, date: 2016-07-03T00:00:00.000Z },
-    // { name: 'italo', score: 2035, date: 2016-07-03T00:00:00.000Z },
-    // { name: 'italo', score: 2857, date: 2016-07-04T00:00:00.000Z },
-    // { name: 'clark', score: 166, date: 2016-07-04T00:00:00.000Z } ]
         
     it('calculates running events correctly', () => {
         const result = heptaScore.getScoreForEvent('100m', 16.2);
@@ -113,6 +97,11 @@ describe('tests', () => {
     });
 
     xit('does not skip any badly formatted lines', () => {
+        // load file
+
+        // blank lines are fine
+
+        // 
 
     });
 
